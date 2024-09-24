@@ -1,6 +1,5 @@
-import { Button as AntdButton } from 'antd';
-import { useDrag } from 'react-dnd';
-import { ButtonType } from 'antd/es/button';
+import { Button as AntdButton } from "antd";
+import { ButtonType } from "antd/es/button";
 
 interface Props {
   text?: string;
@@ -11,19 +10,9 @@ interface Props {
 
 export default function Button(props: Props) {
   const { id, text, type, styles = {} } = props;
-  console.log(props);
-
-  const [, drag] = useDrag({
-    type: 'Button',
-    item: {
-      type: 'Button',
-      dragType: 'move',
-      id,
-    },
-  });
 
   return (
-    <AntdButton ref={drag} data-component-id={id} type={type} style={styles}>
+    <AntdButton data-component-id={id} type={type} style={styles}>
       {text}
     </AntdButton>
   );

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { nanoid } from 'nanoid';
-import { Component, useCmpsStore } from '../../store/components';
-import { useCmpConfigStore } from '../../store/component-config';
+import React, { useEffect } from "react";
+import { nanoid } from "nanoid";
+import { Component, useCmpsStore } from "../../store/components";
+import { useCmpConfigStore } from "../../store/component-config";
 
 export default function Content() {
   const { components, addCmp } = useCmpsStore();
@@ -11,8 +11,8 @@ export default function Content() {
   useEffect(() => {
     const id1 = nanoid();
     const id2 = nanoid();
-    addCmp({ id: id1, name: 'Container', desc: '', props: {} });
-    addCmp({ id: id2, name: 'Button', desc: '', props: { text: '111' } }, id1);
+    addCmp({ id: id1, name: "Page", desc: "", props: {} });
+    addCmp({ id: id2, name: "Button", desc: "", props: { text: "111" } }, id1);
   }, []);
 
   const renderComponent = (cmps: Component[]): React.ReactNode => {
