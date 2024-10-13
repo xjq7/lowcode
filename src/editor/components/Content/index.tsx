@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
-import { nanoid } from "nanoid";
+import React from "react";
 import { Component, useCmpsStore } from "../../store/components";
 import { useCmpConfigStore } from "../../store/component-config";
 
 export default function Content() {
-  const { components, addCmp } = useCmpsStore();
+  const { components } = useCmpsStore();
   const { componentConfig } = useCmpConfigStore();
   const handleMouseOver = () => {};
-
-  useEffect(() => {
-    const id1 = nanoid();
-    const id2 = nanoid();
-    addCmp({ id: id1, name: "Page", desc: "", props: {} });
-    addCmp({ id: id2, name: "Button", desc: "", props: { text: "111" } }, id1);
-  }, []);
+  console.log(components);
 
   const renderComponent = (cmps: Component[]): React.ReactNode => {
     return cmps.map((cmp: Component) => {

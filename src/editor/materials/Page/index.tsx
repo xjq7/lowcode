@@ -1,23 +1,21 @@
 import { PropsWithChildren } from "react";
-import { useDrop } from "react-dnd";
+import useMaterialDrop from "../../hooks/useMaterialDrop";
 
-export default function Page(props: PropsWithChildren) {
-  const { children } = props;
+interface CommonCmpProps extends PropsWithChildren {
+  id: string;
+}
 
-  const [{ canDrop }, drop] = useDrop(() => ({
-    accept: ["Button", "Container"],
-    drop(item) {
-      console.log(item);
-    },
-    collect(monitor) {
-      return {
-        canDrop: monitor.canDrop(),
-      };
-    },
-  }));
+export default function Page(props: CommonCmpProps) {
+  const { id, children } = props;
+
+  const { canDrop, drop } = useMaterialDrop(["Button", "Container"], id);
 
   return (
-    <div ref={drop} style={{ border: canDrop ? "2px solid blue" : "none" }}>
+    <div
+      ref={drop}
+      className="p-[5px] h-[100vh] box-border"
+      style={{ border: canDrop ? "2px solid blue" : "none" }}
+    >
       {children}
     </div>
   );

@@ -1,9 +1,10 @@
-import { create } from 'zustand';
+import { nanoid } from "nanoid";
+import { create } from "zustand";
 
 export interface Component {
   id: string;
   name: string;
-  desc: string;
+  desc?: string;
   props: Record<string, any>;
   children?: Component[];
   pid?: string;
@@ -20,7 +21,7 @@ interface Action {
 }
 
 export const useCmpsStore = create<State & Action>((set, get) => ({
-  components: [{ id: '1', name: 'page', props: {}, desc: '页面' }],
+  components: [{ id: nanoid(), name: "Page", props: {}, desc: "页面" }],
   addCmp(cmp, pid) {
     return set((state) => {
       if (pid) {
