@@ -12,6 +12,7 @@ export default function Container(props: PropsWithChildren<Props>) {
 
   return (
     <div
+      data-component-id={id}
       ref={drop}
       className={`p-[5px] min-h-[100px] ${
         canDrop ? "border-[2px] border-[blue]" : "border-[1px] border-[#000]"
